@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 export const translations = {
   en: {
@@ -350,14 +351,43 @@ interface I18nContextType {
 const I18nContext = createContext<I18nContextType | undefined>(undefined);
 
 export const I18nProvider = ({ children }: { children: ReactNode }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [lang, setLang] = useState<Language>('en');
+
+  const pathSegments = location.pathname.split('/').filter(Boolean);
+  const currentPathLang = (pathSegments.length > 0 && translations.hasOwnProperty(pathSegments[0])) ? pathSegments[0] : 'en';
+
+  useEffect(() => {
+    setLang(currentPathLang as Language);
+  }, [currentPathLang]);
+
+  const setLangWithRedirect = (newLang: Language) => {
+    if (newLang === currentPathLang) return;
+
+    const segments = [...pathSegments];
+    const isCurrentNonEn = segments.length > 0 && translations.hasOwnProperty(segments[0]);
+
+    if (isCurrentNonEn) {
+      if (newLang === 'en') {
+        segments.shift();
+      } else {
+        segments[0] = newLang;
+      }
+    } else {
+      if (newLang !== 'en') {
+        segments.unshift(newLang);
+      }
+    }
+    navigate('/' + segments.join('/'));
+  };
 
   const t = (key: keyof typeof translations['en']) => {
     return (translations[lang] as any)[key] || (translations['en'] as any)[key] || key;
   };
 
   return (
-    <I18nContext.Provider value={{ lang, setLang, t }}>
+    <I18nContext.Provider value={{ lang, setLang: setLangWithRedirect, t }}>
       {children}
     </I18nContext.Provider>
   );

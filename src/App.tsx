@@ -267,26 +267,25 @@ function CTASection() {
 }
 
 function Footer() {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const navigate = useNavigate();
   const location = useLocation();
   const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false);
 
   // Sync modal state with URL
   useEffect(() => {
-    if (location.pathname === '/privacy') {
-      setIsPrivacyModalOpen(true);
-    } else {
-      setIsPrivacyModalOpen(false);
-    }
+    const isPrivacy = location.pathname.endsWith('/privacy');
+    setIsPrivacyModalOpen(isPrivacy);
   }, [location.pathname]);
 
   const handleOpenPrivacy = () => {
-    navigate('/privacy');
+    const prefix = lang === 'en' ? '' : `/${lang}`;
+    navigate(`${prefix}/privacy`);
   };
 
   const handleClosePrivacy = () => {
-    navigate('/');
+    const prefix = lang === 'en' ? '' : `/${lang}`;
+    navigate(prefix || '/');
   };
 
   return (
@@ -362,6 +361,8 @@ function MainApp() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/privacy" element={<LandingPage />} />
+          <Route path="/:langCode" element={<LandingPage />} />
+          <Route path="/:langCode/privacy" element={<LandingPage />} />
         </Routes>
       </main>
       <Footer />
@@ -371,11 +372,11 @@ function MainApp() {
 
 export default function App() {
   return (
-    <I18nProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <I18nProvider>
         <MainApp />
-      </BrowserRouter>
-    </I18nProvider>
+      </I18nProvider>
+    </BrowserRouter>
   );
 }
 
