@@ -300,6 +300,11 @@ function Footer() {
           >
             {t('ft_priv')}
           </button>
+          {t('ft_icp') && (
+            <span className="text-gray-500 opacity-80 uppercase tracking-widest text-[10px]">
+              {t('ft_icp')}
+            </span>
+          )}
         </div>
         <div className="opacity-80 text-center md:text-right">
           {t('ft_copy')}
