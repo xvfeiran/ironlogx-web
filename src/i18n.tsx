@@ -87,7 +87,7 @@ export const translations = {
     ft_terms: "Terms of Engagement",
     ft_status: "System Status",
     ft_copy: "©2026 IRONLOGIX. IRON DISCIPLINE, IRON LAW.",
-    ft_icp: ""
+    ft_icp: "湘ICP备2026014578"
   },
   zh: {
     navbar_start: "开始训练",
@@ -228,7 +228,7 @@ export const translations = {
     ft_terms: "Términos de Compromiso",
     ft_status: "Estado del Sistema",
     ft_copy: "©2026 IRONLOGIX. DISCIPLINA DE HIERRO, LEY DE HIERRO.",
-    ft_icp: ""
+    ft_icp: "湘ICP备2026014578"
   },
   fr: {
     navbar_start: "COMMENCER L'ENTRAÎNEMENT",
@@ -282,7 +282,7 @@ export const translations = {
     ft_terms: "Conditions d'Engagement",
     ft_status: "Statut du Système",
     ft_copy: "©2026 IRONLOGIX. DISCIPLINE DE FER, LOI DE FER.",
-    ft_icp: ""
+    ft_icp: "湘ICP备2026014578"
   },
   de: {
     navbar_start: "TRAINING STARTEN",
@@ -336,7 +336,7 @@ export const translations = {
     ft_terms: "Nutzungsbedingungen",
     ft_status: "Systemstatus",
     ft_copy: "©2026 IRONLOGIX. EISERNE DISZIPLIN, EISERNES GESETZ.",
-    ft_icp: ""
+    ft_icp: "湘ICP备2026014578"
   }
 };
 
