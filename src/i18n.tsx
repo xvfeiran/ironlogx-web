@@ -174,7 +174,7 @@ export const translations = {
     ft_terms: "参与条款",
     ft_status: "系统状态",
     ft_copy: "©2026 IRONLOGIX. IRON DISCIPLINE, IRON LAW。",
-    ft_icp: "ICP备案号：待备案-1"
+    ft_icp: "湘ICP备2026014578"
   },
   es: {
     navbar_start: "INICIAR ENTRENAMIENTO",

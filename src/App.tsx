@@ -300,9 +300,14 @@ function Footer() {
             {t('ft_priv')}
           </button>
           {t('ft_icp') && (
-            <span className="text-gray-500 opacity-80 uppercase tracking-widest text-[10px]">
+            <a 
+              href="https://beian.miit.gov.cn/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-gray-500 hover:text-[#efe754] transition-all opacity-80 hover:opacity-100 uppercase tracking-widest text-[10px] cursor-pointer"
+            >
               {t('ft_icp')}
-            </span>
+            </a>
           )}
         </div>
         <div className="opacity-80 text-center md:text-right">
